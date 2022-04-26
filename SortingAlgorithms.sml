@@ -1,5 +1,5 @@
 (*Created by John Dyer*)
-(*A collection of 5 different sorting algorithms*)
+(*A collection of 4 different sorting algorithms*)
 
 
 (*Miscellaneous*)
@@ -156,12 +156,6 @@
             x;
     (*Deconstructs list to give to the mergeSorter*)
     fun mergeSort (x::y) = mergeSorter (deconstruct (x::y));
-        
-
-
-(*Radix Sort*)
-    (**)
-    fun radixSort (x::y) = sortByDigits (10, [12373,1342]);
 
 
 
@@ -190,12 +184,6 @@
             then printList (mergeSort (x::y))
         else 
             print ("*mergeSort did not return a sorted list* ");
-    (*Prints radix sorted list to console if functional and an error message otherwise*)
-    fun radixSortTest (x::y) =
-        if isSorted (radixSort (x::y))
-            then printList (radixSort (x::y))
-        else 
-            print ("*radixSort did not return a sorted list* ");
             
    
     val l = [22,45,1,6,~4,4,4,3,~3,29999999,~3452,6,6,444,~200000,51,1,~21,2,~122,344,78,44,55,~11,~11];
@@ -203,5 +191,3 @@
     insertionSortTest l;
     selectionSortTest l;
     mergeSortTest l;
-    radixSortTest l;
-    printList (radixSort (l));
