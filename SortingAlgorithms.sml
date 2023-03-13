@@ -64,6 +64,29 @@
         
 
 
+(*Quick Sort*)
+    fun leftPartition (x::y::z) =
+        if x >= y
+            then y::leftPartition(x::z)
+        else
+            leftPartition(x::z)
+        |
+        leftPartition (x) = nil;
+        
+    fun rightPartition (x::y::z) =
+        if x < y
+            then y::rightPartition(x::z)
+        else
+            rightPartition(x::z)
+        |
+        rightPartition (x) = nil;
+        
+    fun quickSort (x::y::z) = quickSort((leftPartition(x::y::z))) @ [x] @ quickSort(rightPartition(x::y::z))
+        |
+        quickSort (x) = x;
+
+
+
 (*Selection Sort*)
     (*Finds smallest integer of list that is not in same position as last*)
     (*a=current int pos, b=last int pos, c=full list size, d=current list size, e=last int pos duplicate*)
@@ -172,6 +195,12 @@
             then printList (insertionSort (x::y))
         else 
             print ("*insertionSort did not return a sorted list* ");
+    (*Prints insertion sorted list to console if functional and an error message otherwise*)
+    fun quickSortTest (x::y) =
+        if isSorted (quickSort (x::y))
+            then printList (quickSort (x::y))
+        else 
+            print ("*quickSort did not return a sorted list* ");
     (*Prints selection sorted list to console if functional and an error message otherwise*)
     fun selectionSortTest (x::y) =
         if isSorted (selectionSort (x::y))
@@ -187,7 +216,9 @@
             
    
     val l = [22,45,1,6,~4,4,4,3,~3,29999999,~3452,6,6,444,~200000,51,1,~21,2,~122,344,78,44,55,~11,~11];
+    val m = [9999, ~9, 6, ~1000, ~1111, 65, 65, 400, 3000];
     bubbleSortTest l;
     insertionSortTest l;
+    quickSortTest l;
     selectionSortTest l;
     mergeSortTest l;
