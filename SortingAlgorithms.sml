@@ -1,5 +1,5 @@
 (*Created by John Dyer*)
-(*A collection of 4 different sorting algorithms*)
+(*A collection of different sorting algorithms*)
 
 
 (*Miscellaneous*)
